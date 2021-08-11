@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePostRequest;
+use Carbon\Carbon;
 
 class Posts extends Controller
 {
@@ -27,13 +28,13 @@ class Posts extends Controller
 
     public function show($id)
     {
+        $users = app(User::class)->all();
+        $tags = app(Tag::class)->all();
         $post = Post::find($id);
-        $user = User::find($post->user_id);
-        $tag = Tag::find($post->tag_id);
         return view('posts.show', [
             'post' => $post,
-            'user' => $user,
-            'tags' => $tag
+            'users' => $users,
+            'tags' => $tags
             ]);
     }
     public function create()
@@ -45,15 +46,28 @@ class Posts extends Controller
 
     public function edit($id)
     {
+        $users = app(User::class)->all();
+        $tags = app(Tag::class)->all();
         $post = Post::find($id);
-        return view('posts.edit', ['post' => $post]);
+        return view('posts.edit', [
+            'post' => $post,
+            'users' => $users,
+            'tags' => $tags
+        ]);
     }
 
     public function store(CreatePostRequest $request)
     {
-        $request->validated();
-        //dd($request->all());
-        app(Post::class)->create($request->all());
+        $post = new Post($request->validated());
+        $post->insert([
+            'slug' => $request->slug,
+            'body' => $request->body,
+            'title' =>$request->title,
+            'user_id' =>$request->user_id,
+            ]);
+        $post->save();
+        $post->tags()->attach($request->tag_id);
+
         return redirect()->route('posts') ;
     }
 

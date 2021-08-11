@@ -5,24 +5,26 @@
 <h1>My post details</h1>
 
 @if(isset($post))
-<h2>{{$post->title}}</h2>
+<label for="">title</label>
+<h3>{{$post->title}}</h3>
+<label for="">slug</label>
 <h3>{{$post->slug}}</h3>
+<label for="">body</label>
 <p>{{$post->body}}</p>
-{{$tags}}
-<p>Posted by - {{$user->name ?? ''}}</p>
-<p>Tags - {{$tags->name ?? ''}}</p>
+
+<p>Posted by - {{$post->user->name?? ''}}</p>
+<p>Tags
+    @foreach ($post->tags as $tag)
+    <li><a href="">{{$tag->name ?? ''}}</a> </li>
+    @endforeach
+</p>
 
 @endif
-<div>
-    <form action="{{url('post/'.$post->id.'/update')}}" method="post">
-        @csrf
-        <button type='submit' class="btn btn-primary">update
-            post</button>
-    </form>
-    </br>
-    <button onclick="deleteSwal('{{route('delete-posts', ['id' => $post->id])}}')" class="btn btn-secondary">New
-        Delete</button>
-</div>
+<button onclick="window.location='{{route('edit-posts', ['id' => $post->id])}}'" class="btn btn-primary">update
+    post</button>
+<button onclick="deleteSwal('{{route('delete-posts', ['id' => $post->id])}}')" class="btn btn-secondary">New
+    Delete</button>
+
 <div>
     <a href="{{route('welcome')}}">Voltar</a>
 </div>
