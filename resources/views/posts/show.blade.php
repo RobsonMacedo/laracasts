@@ -11,11 +11,10 @@
 <h3>{{$post->slug}}</h3>
 <label for="">body</label>
 <p>{{$post->body}}</p>
-
 <p>Posted by - {{$post->user->name?? ''}}</p>
 <p>Tags
     @foreach ($post->tags as $tag)
-    <li><a href="">{{$tag->name ?? ''}}</a> </li>
+    <li><a href="">{{$tag->name ?? 'No tags until now!'}}</a> </li>
     @endforeach
 </p>
 

@@ -19,7 +19,7 @@ class Post extends Model
 
     ];
 
-    protected $orderBy = ['created_at' => 'asc'];
+
 
     public function user()
     {

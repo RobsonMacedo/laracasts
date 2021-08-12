@@ -7,9 +7,12 @@
     <h1>Updating a post</h1>
     <div class="form-group">
         <label for="exampleInputPassword1">title</label>
-        <input type='text' class="form-control" id="exampleInputPassword1" placeholder="your title here" name="title"
-            value={{$post->title}}>
+        <input type='text' class="form-control @error('title') is-invalid  @enderror" id="exampleInputPassword1"
+            placeholder="your title here" name="title" value="{{old('title',$post->title) }}">
     </div>
+    @error('title')
+    <small class='text-danger'>{{$message}}</small>
+    @enderror
 
     <div class="form-group">
         <label for="exampleInputEmail1">slug</label>
@@ -24,18 +27,19 @@
     </div>
     <div class="form-group">
         <label for="">user</label>
+
         <select name="user_id" class="form-select @error('user_id') is-invalid @enderror"
             aria-label="Default select example">
 
             @if(isset($post->user->name))
-            <option value="{{$post->user->name}}" @if($post->user->name == old('user_id')) selected @endif
+            <option value="{{$post->user->id}}" @if($post->user->name == old('user_id')) selected @endif
                 name="user_id"> {{$post->user->name}} </option>
 
             @else
-            <option value="" @if(!old('tag_id')) selected @endif> Select your tags </option>
+            <option value="" @if(!old('user_id')) selected @endif> Select user </option>
             @endif
             @foreach ($users as $user)
-            <option value="{{$user->name}}" @if($user->name == old('user_id')) selected @endif
+            <option value="{{$user->id}}" @if($user->name == old('user_id')) selected @endif
                 name="user_id">{{$user->name}} </option>
             @endforeach
 
@@ -46,17 +50,23 @@
     <small class="text-danger">{{$errors->first('user_id')}}</small>
     @endif
 
+
     <div class="form-group">
         <label for="">select your tags</label>
         <select name="tag_id[]" class="form-select @error('tag_id') is-invalid @enderror" multiple
             aria-label="multiple select example">
-            <option value="" @if(!old('tag_id')) selected @endif> Select your tags </option>
             @foreach ($tags as $tag)
-            <option value="{{$tag->id}}" @if (old('tag_id') && in_array($tag->id, old('tag_id'))) selected
-                @endif>{{$tag->name}}</option>
+            <option value="{{$tag->id}}" @if(in_array($tag->id, old('tag_id', $post->tags->pluck('id')->toArray())))
+                selected @endif >{{$tag->name}}
+            </option>
             @endforeach
         </select>
     </div>
+
+
+    @if($errors->has('tag_id'))
+    <small class="text-danger">{{$errors->first('tag_id')}}</small>
+    @endif
 
 
     <button type="submit" class="btn btn-primary">Submit</button>

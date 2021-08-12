@@ -59,7 +59,8 @@ class Posts extends Controller
     public function store(CreatePostRequest $request)
     {
         $post = new Post($request->validated());
-        $post->insert([
+        //dd($request->all());
+        $post->fill([
             'slug' => $request->slug,
             'body' => $request->body,
             'title' =>$request->title,
@@ -67,17 +68,24 @@ class Posts extends Controller
             ]);
         $post->save();
         $post->tags()->attach($request->tag_id);
-
-        return redirect()->route('posts') ;
+        
+        return redirect()->route('posts', ['tags'=>$request->tag_id]) ;
     }
 
     public function update(CreatePostRequest $request, $id)
     {
-        dd($request->all());
         $request->validated();
+        $post = app(Post::class)->find($id);
         
-
-        app(Post::class)->find($id)->update($request->all());
+        $post->update([
+            'slug' => $request->slug,
+            'body' => $request->body,
+            'title' =>$request->title,
+            'user_id' =>$request->user_id,
+            ]);
+        $post->tags()->sync($request->tag_id);
+        $post->save();
+        
         return redirect()->route('posts') ;
     }
 

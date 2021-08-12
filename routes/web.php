@@ -51,3 +51,11 @@ Route::prefix('tag')->group(function () {
     Route::post('/{id}/update', [Tags::class, 'update'])->name('update-tag');
     Route::get('/{id}/delete', [Tags::class, 'delete'])->name('delete-tag');
 });
+
+Route::get('/test', function () {
+    $col = collect([
+        ['id' => 1, 'name' =>'Robson'],
+        ['id' => 2, 'name' =>'Flavia'],
+    ]);
+    dd($col->pluck('name'));
+});

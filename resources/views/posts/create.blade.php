@@ -52,7 +52,6 @@
         <label for="">select your tags</label>
         <select name="tag_id[]" class="form-select @error('tag_id') is-invalid @enderror" multiple
             aria-label="multiple select example">
-            <option value="" @if(!old('tag_id')) selected @endif> Select your tags </option>
             @foreach ($tags as $tag)
             <option value="{{$tag->id}}" @if (old('tag_id') && in_array($tag->id, old('tag_id'))) selected
                 @endif>{{$tag->name}}</option>
