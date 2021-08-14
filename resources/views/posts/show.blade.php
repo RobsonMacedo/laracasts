@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -23,6 +23,8 @@
     post</button>
 <button onclick="deleteSwal('{{route('delete-posts', ['id' => $post->id])}}')" class="btn btn-secondary">New
     Delete</button>
+
+@include('comments.index')
 
 <div>
     <a href="{{route('welcome')}}">Voltar</a>

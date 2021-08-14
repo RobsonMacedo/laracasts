@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Posts;
 use App\Http\Controllers\Tags;
 use App\Http\Controllers\Contact;
+use App\Http\Livewire\Posts as LivewirePosts;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,8 @@ Route::get('/post/{id}', [Posts::class, 'show'])->name('show-posts');
 Route::get('/post/{id}/edit', [Posts::class, 'edit'])->name('edit-posts');
 Route::post('/post/{id}/update', [Posts::class, 'update'])->name('update-posts');
 Route::get('/post/{id}/delete', [Posts::class, 'delete'])->name('delete-posts');
-Route::get('/posts', [Posts::class, 'index'])->name('posts');
+//Route::get('/posts', [Posts::class, 'index'])->name('posts');
+Route::get('/posts', LivewirePosts::class)->name('posts');
 Route::get('/posts/create', [Posts::class, 'create'])->name('create-posts');
 Route::get('/contact', [Contact::class, 'show'])->name('contact');
 
@@ -52,6 +54,7 @@ Route::prefix('tag')->group(function () {
     Route::get('/{id}/delete', [Tags::class, 'delete'])->name('delete-tag');
 });
 
+
 Route::get('/test', function () {
     $col = collect([
         ['id' => 1, 'name' =>'Robson'],
@@ -59,3 +62,6 @@ Route::get('/test', function () {
     ]);
     dd($col->pluck('name'));
 });
+
+
+Route::post('/post/{id}', [Comments::class, 'store'])->name('comments-store');

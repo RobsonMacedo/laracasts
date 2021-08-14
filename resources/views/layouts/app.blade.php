@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="eng">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Laracasts</title>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>{{-- Swal 2 --}}
-
+    @livewireStyles
 </head>
 
 <body>
@@ -19,6 +19,7 @@
     </div>
     <script type="text/javascript" src="{{mix('/js/app.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    @livewireScripts
 </body>
 
 </html>

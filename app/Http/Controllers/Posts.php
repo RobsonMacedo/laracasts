@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Tag;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePostRequest;
 use Carbon\Carbon;
@@ -21,10 +22,7 @@ class Posts extends Controller
         ]);
     } */
 
-    public function index()
-    {
-        return view('posts.index', ['all' => Post::orderBy('updated_at', 'desc')->orderBy('created_at', 'desc')->get()]);
-    }
+    
 
     public function show($id)
     {
