@@ -1,3 +1,5 @@
+const axios = require('axios').default;
+
 /******/ (() => {
     // webpackBootstrap
     /******/ 'use strict';
@@ -22,4 +24,16 @@ window.deleteSwal = (url) => {
             }
         })
         .catch(($error) => console.log($error));
+};
+
+window.saveComment = (route, postId) => {
+    axios
+        .post(route)
+        .then(function (response) {
+            window.location = route;
+        })
+        .catch(function (error) {
+            console.log(route, postId);
+            console.log(error);
+        });
 };

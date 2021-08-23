@@ -1,10 +1,17 @@
-<div class="container">
-    <form action="{{route('comments-store', ['id'=> $post->id])}}" method="post"></form>
-    <div class="form-floating">
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-            style="height: 100px"></textarea>
-        <label for="floatingTextarea2">Comments</label>
-        <button class="btn btn-primary" type="submit">Save</button>
+{{$post->comments}}
+{{$post->id}}
+<form onsubmit="return false" method="post">
+    @csrf
+    <textarea class="form-control @error('text') is-invalid @enderror" placeholder="Leave a comment here"
+        id="floatingTextarea2" name="comment" style="height: 100px"></textarea>
 
+    @error('text')
+    <small class="text-danger"> {{ $message }} </small>
+    @enderror
+
+
+    <div>
+        <button onclick="saveComment('{{route('comments-store', ['id' => $post->id])}}')" class="btn btn-primary"
+            type="submit">Save</button>
     </div>
-</div>
+</form>

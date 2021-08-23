@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Posts;
 use App\Http\Controllers\Tags;
+use App\Http\Controllers\Comments;
 use App\Http\Controllers\Contact;
 use App\Http\Livewire\Posts as LivewirePosts;
 

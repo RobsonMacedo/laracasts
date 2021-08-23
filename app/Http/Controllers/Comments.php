@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\CommentRequest;
 
-class Comment extends Controller
+class Comments extends Controller
 {
     public function store(CommentRequest $request, $postId)
     {
-        $request->validated();
+        dd('oi');
         $comment = app(Comment::class)->create($request->all);
         dd($comment);
     }

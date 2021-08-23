@@ -19,10 +19,12 @@
 </p>
 
 @endif
-<button onclick="window.location='{{route('edit-posts', ['id' => $post->id])}}'" class="btn btn-primary">update
-    post</button>
-<button onclick="deleteSwal('{{route('delete-posts', ['id' => $post->id])}}')" class="btn btn-secondary">New
-    Delete</button>
+<div>
+    <button onclick="window.location='{{route('edit-posts', ['id' => $post->id])}}'" class="btn btn-primary">update
+    </button>
+    <button onclick="deleteSwal('{{route('delete-posts', ['id' => $post->id])}}')" class="btn btn-secondary">
+        delete</button>
+</div>
 
 @include('comments.index')
 
