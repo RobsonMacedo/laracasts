@@ -12,12 +12,16 @@
     @livewireStyles
 </head>
 
-<body>
+<body class="fundo">
+
     <div class="container-fluid">
         @include('header')
     </div>
     <div class="container">
         @yield('content')
+    </div>
+    <div class="container-fluid">
+        @include('footer')
     </div>
     <script type="text/javascript" src="{{mix('/js/app.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

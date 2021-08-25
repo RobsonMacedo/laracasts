@@ -19,4 +19,5 @@
 <div>
     <a href="{{route('welcome')}}">Voltar</a>
 </div>
+
 @endsection
