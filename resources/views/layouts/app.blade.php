@@ -13,8 +13,10 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         @include('header')
+    </div>
+    <div class="container">
         @yield('content')
     </div>
     <script type="text/javascript" src="{{mix('/js/app.js')}}"></script>
