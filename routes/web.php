@@ -6,6 +6,8 @@ use App\Http\Controllers\Tags;
 use App\Http\Controllers\Comments;
 use App\Http\Controllers\Contact;
 use App\Http\Livewire\Posts as LivewirePosts;
+use App\Http\Livewire\Posts\Create as LivewirePostsCreate;
+use App\Http\Livewire\ContactForm;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,17 @@ use App\Http\Livewire\Posts as LivewirePosts;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/* Route::post('/contact', function (Request $request) {
+    $contact = $request->validate([
+        'name' =>'required',
+        'email' =>'required|email',
+        'message' =>'required'
+    ]);
+    return back()->with('success_message', 'We recieved your message!');
+});
+ */Route::post('/contact', ContactForm::class)->name('contact');
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,7 +47,7 @@ Route::get('/', function () {
     return view('posts', ['posts'=>$posts[$post] ?? "Nothing here yet!"]); //traited here
 }); */
 
-Route::post('/posts', [Posts::class, 'store'])->name('store-posts');
+Route::post('/posts', LivewirePostsCreate::class)->name('store-posts');
 Route::get('/post/{id}', [Posts::class, 'show'])->name('show-posts');
 Route::get('/post/{id}/edit', [Posts::class, 'edit'])->name('edit-posts');
 Route::post('/post/{id}/update', [Posts::class, 'update'])->name('update-posts');
@@ -42,6 +55,7 @@ Route::get('/post/{id}/delete', [Posts::class, 'delete'])->name('delete-posts');
 //Route::get('/posts', [Posts::class, 'index'])->name('posts');
 Route::get('/posts', LivewirePosts::class)->name('posts');
 Route::get('/posts/create', [Posts::class, 'create'])->name('create-posts');
+//Route::post('/posts/create', LivewirePostsCreate::class)->name('create-posts');
 Route::get('/contact', [Contact::class, 'show'])->name('contact');
 
 

@@ -17,6 +17,7 @@
                 <li><a href="{{route('tags')}}" class="nav-link px-2 text-white">My Tags</a></li>
                 <li><a href="{{route('create-posts')}}" class="nav-link px-2 text-white">Create a post</a></li>
                 <li><a href="{{route('create-tag')}}" class="nav-link px-2 text-white">Create a tag</a></li>
+                <li><a href="{{route('contact')}}" class="nav-link px-2 text-white">Contact us</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">

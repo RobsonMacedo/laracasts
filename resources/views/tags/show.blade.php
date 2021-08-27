@@ -6,7 +6,7 @@
 
 @if(isset($tag))
 <h2>{{$tag->name}}</h2>
-
+<p>{{$tag->description}}</p>
 
 @endif
 <a class="btn btn-primary" href="{{route('edit-tag', ['id' => $tag->id])}}">update tag</a>

@@ -24,7 +24,8 @@ class CreateTagRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
+            'description' =>'required|min:5|max:50'
         ];
     }
 }
