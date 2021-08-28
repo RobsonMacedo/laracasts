@@ -8,6 +8,7 @@
         <form action="{{route('store-tag')}}" method="POST">
             @csrf
             <h1>Crie sua tag</h1>
+
             <div class="form-group ">
                 <label class="mb-2" for="name">Nome</label>
                 <input type='text' class="form-control @error('name') is-invalid @enderror" id="name"

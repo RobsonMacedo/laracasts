@@ -7,6 +7,7 @@ use App\Http\Controllers\Comments;
 use App\Http\Controllers\Contact;
 use App\Http\Livewire\Posts as LivewirePosts;
 use App\Http\Livewire\Posts\Create as LivewirePostsCreate;
+use App\Http\Livewire\Posts\Show as LivewirePostsShow;
 use App\Http\Livewire\ContactForm;
 
 /*
@@ -48,7 +49,8 @@ Route::get('/', function () {
 }); */
 
 Route::post('/posts', LivewirePostsCreate::class)->name('store-posts');
-Route::get('/post/{id}', [Posts::class, 'show'])->name('show-posts');
+//Route::get('/post/{id}', [Posts::class, 'show'])->name('show-posts');
+Route::get('/post/{id}', LivewirePostsShow::class)->name('show-posts');
 Route::get('/post/{id}/edit', [Posts::class, 'edit'])->name('edit-posts');
 Route::post('/post/{id}/update', [Posts::class, 'update'])->name('update-posts');
 Route::get('/post/{id}/delete', [Posts::class, 'delete'])->name('delete-posts');
@@ -71,11 +73,10 @@ Route::prefix('tag')->group(function () {
 
 
 Route::get('/test', function () {
-    $col = collect([
-        ['id' => 1, 'name' =>'Robson'],
-        ['id' => 2, 'name' =>'Flavia'],
-    ]);
-    dd($col->pluck('name'));
+    return view('test');
+});
+Route::post('/test2', function () {
+    dd(request()->all());
 });
 
 

@@ -3,6 +3,15 @@
         @csrf
         <h1>Crie seu post</h1>
 
+        <div>
+            @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+            @endif
+        </div>
+
+
         <div class="form-group ">
             <label class="mb-2" for="exampleInputPassword1 ">Título</label>
             <input wire:model="title" type='text' class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}"
@@ -35,8 +44,8 @@
         @enderror
 
         <div class="form-group mt-2">
-            <label class="mb-2 for="">user</label>
-            <select wire:model=" user_id" name="user_id" class="form-select @error('user_id') is-invalid @enderror"
+            <label class="mb-2">user</label>
+            <select wire:model="user_id" name="user_id" class="form-select @error('user_id') is-invalid @enderror"
                 aria-label="Default select example">
                 <option value="" @if(old('user_id')==null) selected @endif>Select the user</option>
                 {{-- colocar o value vazio para este caso --}}
@@ -45,7 +54,7 @@
                     name="user_id">{{$user->name}} </option>
                 @endforeach
 
-                </select>
+            </select>
 
         </div>
         @error('user_id')
@@ -54,14 +63,14 @@
 
 
         <div class="form-group mt-2">
-            <label class="mb-2 for="">select your tags</label>
-            <select wire:model=" tag_id" name="tag_id[]" class="form-select @error('tag_id') is-invalid @enderror"
+            <label class="mb-2">select your tags</label>
+            <select wire:model="tag_id" name="tag_id[]" class="form-select @error('tag_id') is-invalid @enderror"
                 multiple aria-label="multiple select example">
                 @foreach ($tags as $tag)
                 <option value="{{$tag->id}}" @if (old('tag_id') && in_array($tag->id, old('tag_id'))) selected
                     @endif>{{$tag->name}}</option>
                 @endforeach
-                </select>
+            </select>
         </div>
         @error('tag_id')
         <small class="text-danger">{{$message}}</small>

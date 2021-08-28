@@ -50,9 +50,12 @@ class Create extends Component
         $post->save();
         $post->tags()->attach($this->tag_id);
 
+        $this->reset();
+
+        session()->flash('message', 'We recieved your message!');
+
+        //return redirect()->route('posts', ['tags'=>$post->tag_id]);
         
-        return redirect()->route('posts', ['tags'=>$post->tag_id]);
-        return back()->with('success_message', 'We recieved your message!');
         
 
         //return redirect()->route('store-posts');
