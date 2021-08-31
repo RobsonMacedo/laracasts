@@ -5,7 +5,8 @@ use App\Http\Controllers\Posts;
 use App\Http\Controllers\Tags;
 use App\Http\Controllers\Comments;
 use App\Http\Controllers\Contact;
-use App\Http\Livewire\Posts as LivewirePosts;
+use App\Http\Livewire\Posts\Index as LivewirePosts;
+use App\Http\Livewire\Tags\Index as LivewireTags;
 use App\Http\Livewire\Posts\Create as LivewirePostsCreate;
 use App\Http\Livewire\Posts\Show as LivewirePostsShow;
 use App\Http\Livewire\ContactForm;
@@ -62,7 +63,7 @@ Route::get('/contact', [Contact::class, 'show'])->name('contact');
 
 
 Route::prefix('tag')->group(function () {
-    Route::get('/', [Tags::class, 'index'])->name('tags');
+    Route::get('/', LivewireTags::class)->name('tags');
     Route::get('/create', [Tags::class, 'create'])->name('create-tag');
     Route::post('/', [Tags::class, 'store'])->name('store-tag');
     Route::get('/{id}', [Tags::class, 'show'])->name('show-tag');

@@ -52,12 +52,7 @@ class Create extends Component
 
         $this->reset();
 
-        session()->flash('message', 'We recieved your message!');
+        session()->flash('message', 'Thanks for post here!');
 
-        //return redirect()->route('posts', ['tags'=>$post->tag_id]);
-        
-        
-
-        //return redirect()->route('store-posts');
     }
 }

@@ -1,6 +1,8 @@
 <div>
     <form wire:submit.prevent="save" method="POST">
         @csrf
+
+
         <h1>Crie seu post</h1>
 
         <div>

@@ -6,7 +6,7 @@
         <div class="mb-3">
             <label for="name" class="form-label">name</label>
             <input wire:model="name" type="text" class="form-control" id="name" aria-describedby="name"
-                placeholder="your name">
+                placeholder="your name" autofocus>
             @error('name')
             <small>{{$message}}</small>
             @enderror

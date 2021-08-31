@@ -1,13 +1,9 @@
-@extends('layouts.app')
-
-@section('content')
-{{-- <style>
-    .margin-top {
-        margin-top: 1%;
-    }
-</style> --}}
+<div>
 <div class="row mb-2 mt-3">
-    @foreach ($posts as $post)
+
+ 
+@foreach ($posts as $post)
+
     <div class="col-md-6">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
@@ -36,4 +32,4 @@
     <a href="{{route('welcome')}}">Voltar</a>
 </div>
 
-@endsection
+</div>

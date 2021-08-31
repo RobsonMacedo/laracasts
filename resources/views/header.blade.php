@@ -19,11 +19,12 @@
                 <li><a href="{{route('create-tag')}}" class="nav-link px-2 text-white">Create a tag</a></li>
                 <li><a href="{{route('contact')}}" class="nav-link px-2 text-white">Contact us</a></li>
             </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-            </form>
-
+        
+            
+            @if(Route::is("posts") || Route::is("tags"))
+            <livewire:search-field/>
+            @endif
+            
             <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2">Login</button>
                 <button type="button" class="btn btn-warning">Sign-up</button>

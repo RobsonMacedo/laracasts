@@ -14,6 +14,8 @@
 
 <body class="fundo">
 
+   
+
     <div class="container-fluid">
         @include('header')
     </div>
@@ -22,6 +24,12 @@
         @yield('content')
     </div>
 
+    @if(isset($slot))
+    <div class="container">
+        {{$slot}}
+    </div>
+    @endif
+    
     <div class="container-fluid">
         @include('footer')
     </div>
