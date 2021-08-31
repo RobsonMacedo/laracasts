@@ -1,8 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
-
-
 <div class="card mb-3 col-10 align-middle rounded-3 shadow-sm mt-2">
     @if(isset($post))
     <div class="card-header py-3">
@@ -32,12 +27,14 @@
 
 
         <div class="row">
-            <div class="col"><button type="button" wire:click="update"
-                    class="w-100 btn btn-lg btn-outline-primary">Alterar</button>
+            <div class="col">
+                @livewire('edit-button', ['post'=> $post])
             </div>
 
+            <div class="col">
+                @livewire('delete-button', ['post' => $post])
+            </div>
 
-            <livewire:posts.delete :post="$post" /> {{-- Passing variable into component --}}
 
         </div>
     </div>
@@ -45,6 +42,3 @@
 
 </div>
 <livewire:back-button />
-
-
-@endsection

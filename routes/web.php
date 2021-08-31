@@ -9,6 +9,7 @@ use App\Http\Livewire\Posts\Index as LivewirePosts;
 use App\Http\Livewire\Tags\Index as LivewireTags;
 use App\Http\Livewire\Posts\Create as LivewirePostsCreate;
 use App\Http\Livewire\Posts\Show as LivewirePostsShow;
+use App\Http\Livewire\Posts\Edit as LivewirePostsEdit;
 use App\Http\Livewire\ContactForm;
 
 /*
@@ -52,7 +53,7 @@ Route::get('/', function () {
 Route::post('/posts', LivewirePostsCreate::class)->name('store-posts');
 //Route::get('/post/{id}', [Posts::class, 'show'])->name('show-posts');
 Route::get('/post/{id}', LivewirePostsShow::class)->name('show-posts');
-Route::get('/post/{id}/edit', [Posts::class, 'edit'])->name('edit-posts');
+Route::get('/post/{id}/edit', LivewirePostsEdit::class)->name('edit-posts');
 Route::post('/post/{id}/update', [Posts::class, 'update'])->name('update-posts');
 Route::get('/post/{id}/delete', [Posts::class, 'delete'])->name('delete-posts');
 //Route::get('/posts', [Posts::class, 'index'])->name('posts');
