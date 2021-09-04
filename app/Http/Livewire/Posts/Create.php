@@ -22,7 +22,6 @@ class Create extends Component
 
     public function render()
     {
-        //dd('oi');
         $this->users = app(User::class)->all();
         $this->tags = app(Tag::class)->all();
         return view('livewire.posts.create');
@@ -53,6 +52,5 @@ class Create extends Component
         $this->reset();
 
         session()->flash('message', 'Thanks for post here!');
-
     }
 }

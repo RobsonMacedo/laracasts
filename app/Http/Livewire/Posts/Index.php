@@ -17,12 +17,11 @@ class Index extends Component
 
     public function searchPost($array)
     {
-        
         $this->search = $array['search'];
-    
     }
 
-    public function filter(){
+    public function filter()
+    {
         $this->posts = Post::where('title', 'like', '%'. $this->search. '%')
                         ->orderBy('updated_at', 'desc')
                         ->orderBy('created_at', 'desc')

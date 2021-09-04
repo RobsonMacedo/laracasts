@@ -4,16 +4,24 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Tag;
 
 class EditButton extends Component
 {
     public $post;
+    public $postId;
+    public $users;
+    public $tags;
 
-    public function edit($post)
+    public function edit($id)
     {
-        //dd('oi');/* parei aqui */
-        dd($post->id);
-        return redirect()->route('edit-posts', ['id'=>$this->post->id]);
+        //dd($id);
+        $this->users =  User::all();
+        $this->tag =  Tag::all();
+        $this->postId = $id;
+        $this->post = Post::find($id);
+        return redirect()->route('edit-posts', ['id' => $this->postId]);
     }
 
 

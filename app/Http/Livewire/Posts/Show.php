@@ -13,17 +13,15 @@ class Show extends Component
     public $tags;
     public $post;
     public $postId;
+    public $comments;
+
+    protected $listeners = ['refresh'];
+
     
     public function mount($id)
     {
         $this->postId = $id;
         $this->post = Post::find($id);
-    }
-
-    public function update()
-    {
-        dd('oi');
-        return view('posts.edit');
     }
 
     public function delete()

@@ -16,8 +16,7 @@ class Post extends Model
         'body',
         'slug',
         'user_id',
-        
-
+        'comment_id'
     ];
 
 

@@ -16,7 +16,7 @@
             <div class="col">
                 <p>Tags
                     @foreach ($post->tags as $tag)
-                    <button type="button" class="btn btn-light">{{$tag->name ?? 'No tags until now!'}}</button>
+                    <button type="button" class="btn btn-info">{{$tag->name ?? 'No tags until now!'}}</button>
                     @endforeach
                 </p>
             </div>
@@ -39,6 +39,7 @@
         </div>
     </div>
     @endif
+    @livewire('posts.comments', ['post' => $post])
 
 </div>
 <livewire:back-button />
